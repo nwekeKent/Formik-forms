@@ -1,53 +1,59 @@
-import React, {Component} from 'react';
-import Todos from './Todos'
-import AddTodo from './addTodo'
-
-  class App extends Component {
-  state ={
-    todos: [
-      {
-        id:1, content:'learn react'
-      },
-       {
-        id:2, content:'learn more react'
-      }
-    ]
-      }
-
-    deleteTodo = (id) => {
-      const todos = this.state.todos.filter(todo => {
-            return todo.id !== id
-
-      })
-
-      this.setState({
-        todos:todos
-      })
-    }
-
-    addTodo = (todo) => {
-      todo.id = Math.random();
-      let todos = [...this.state.todos, todo];
-      this.setState({
-        todos:todos
-      })
-
-    }
-  render() {
-    return (
-      <div className="App container my-5 ">
-        <div className='container text-center'>
-          <h1 className='display-4 py-3 text-success'>Do-It</h1>
-        </div>
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
-        <AddTodo addTodo={this.addTodo}/>
-      </div>
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import data from './data';
+import List from './Components/List';
+import Button from './Components/Button';
 
 
-      )
 
+
+const Wrapper = styled.main`
+   display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    font-family: 'josefin sans' , sans-serif;
+    
+`
+
+const Section = styled.section`
+    width: 300px;
+    height: auto;
+    border-radius: 4px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    padding: 1.2rem 1.5rem;
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
   }
+    
+   
 
+`
+
+
+
+const App = () => {
+
+  const clearAll = () => {
+    setPeople([])
+  }
+  const [ people, setPeople ] = useState(data)
+
+    return (
+      <Wrapper>
+      <Section>
+      <h3>{people.length} birthdays today</h3>
+      <List people = {people} />
+      <Button clearAll = {clearAll}> clear all </Button>
+      </Section>
+      </Wrapper>
+    )
 }
+
 
 export default App;
