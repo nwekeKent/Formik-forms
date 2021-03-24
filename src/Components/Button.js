@@ -1,27 +1,27 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-    color: #fff;
-    display: block;
     width: 100%;
-    border-color: transparent;
-    background-color:#f28ab2;
-    margin: 2rem auto 0 auto;
-    text-transform: capitalize;
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
-    letter-spacing: 0.21rem;
-    border-radius: 0.25rem;
     outline: none;
-    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: .5em 1.5em;
+    background-color: ${props => props.primary ? "#070707" : "#E0E0E0"};
+    color:${props => props.primary ? "#f5f5f5" : "#070707"};
+    font-size:0.7em;
+    font-family: 'montserrat',sans-serif;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+
+
 `
 
-const Button = ({ children, clearAll }) => {
+const Button = ({primary , children}) => {
     return (
-        <StyledButton onClick={() => {clearAll()}}> {children} </StyledButton>
+        <StyledButton primary = {primary}> {children} </StyledButton>
     )
 }
 
-export default Button
-
+export default Button;
