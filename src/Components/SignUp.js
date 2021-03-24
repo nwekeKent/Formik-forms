@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Article } from './Home';
 import { Input, Form, Error } from './SignIn';
-import threadmill from '../Assets/Threadmill.jpg';
+import signupLogo from '../Assets/signuplogo.jpg';
 import Button from './Button';
 import google from '../Assets/google-logo.png'
 
@@ -41,7 +41,8 @@ const SignUp = () => {
       });
      return (
          <Article>
-                <img src={threadmill} alt="gym pics"/>
+                <img src={signupLogo} alt="gym pics"/>
+                <h3>Start your journey with us</h3>
                 <Button><img className='google' src={google} alt=""/> Sign up with google</Button>
                 <Form onSubmit={formik.handleSubmit}>
                 <Input 
