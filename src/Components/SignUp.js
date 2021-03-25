@@ -20,29 +20,32 @@ const SignUp = () => {
         validationSchema: Yup.object({
             password: Yup.string()
               .max(15, 'Must be 15 characters or less')
-              .min(8, 'must be more than 8 characters')
-              .required('enter your password'),
+              .min(8, 'Must be more than 8 characters')
+              .required('Enter your password'),
               password2: Yup.string()
               .max(15, 'Must be 15 characters or less')
-              .min(8, 'must be more than 8 characters')
-              .required("this can't be empty"),
-            firstName: Yup.string()
+              .min(8, 'Must be more than 8 characters')
+              .required("This can't be empty")
+              .oneOf([Yup.ref('password')], 'Passwords does not match'),
+              
+            firstname: Yup.string()
               .max(15, 'Must be 15 characters or less')
-              .required('Required'),
-            lastName: Yup.string()
+              .required('Enter first name'),
+            lastname: Yup.string()
               .max(20, 'Must be 20 characters or less')
-              .required('Required'),
+              .required('Enter last name'),
            
-            email: Yup.string().email('Invalid email address').required('email cant be empty'),
+            email: Yup.string().email('Invalid email address').required('Email cant be empty'),
           }),
-        onSubmit: values => {
+        onSubmit: (values, {resetForm}) => {
           alert(JSON.stringify(values, null, 2));
+          resetForm({values:''})
         },
       });
      return (
          <Article>
                 <img src={signupLogo} alt="gym pics"/>
-                <h3>Start your journey with us</h3>
+                <h4>Start your journey with us</h4>
                 <Button><img className='google' src={google} alt=""/> Sign up with google</Button>
                 <Form onSubmit={formik.handleSubmit}>
                 <Input 
@@ -55,8 +58,8 @@ const SignUp = () => {
                 value={formik.values.firstname}
                 
                 />
-                {formik.touched.email && formik.errors.email ? (
-                    <Error>{formik.errors.email}</Error>
+                {formik.touched.firstname && formik.errors.firstname ? (
+                    <Error>{formik.errors.firstname}</Error>
                   ) : null}
                   <Input 
                   placeholder = 'Enter your last name'
@@ -68,8 +71,8 @@ const SignUp = () => {
                   value={formik.values.lastname}
                   
                   />
-                  {formik.touched.email && formik.errors.email ? (
-                      <Error>{formik.errors.email}</Error>
+                  {formik.touched.lastname && formik.errors.lastname ? (
+                      <Error>{formik.errors.lastname}</Error>
                     ) : null}
                 <Input 
                 placeholder = 'Enter your email address'
