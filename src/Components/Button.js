@@ -14,7 +14,17 @@ const StyledButton = styled.button`
     margin-bottom: 10px;
     font-weight: bold;
     letter-spacing: 1.2px;
+    transition: all .5s ease-in;
 
+
+    &:focus {
+        outline:none;
+        border:none;
+    }
+
+    &:hover {
+        letter-spacing: 2.3px;
+    }
 
 `
 
