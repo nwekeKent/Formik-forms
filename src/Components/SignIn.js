@@ -26,6 +26,7 @@ export const Form = styled.form`
     width: 100%;
     border:1px solid #E0E0E0;
     outline:none;
+    border-radius:4px;
     padding: 0.2em 0.85em;
     margin-bottom: 10px;
     font-size: 0.8rem;
@@ -45,10 +46,12 @@ export const Form = styled.form`
  `
 
  export const Error = styled.p`
-         font-size: 0.5rem;
+         font-size: 8px;
          color: #CC2500;
-         margin-bottom: 5px;
+         margin-bottom: 3px;
          margin-top:0;
+         font-family:'josefin sans', sans-serif;
+         text-align:right;
  
  `
 
