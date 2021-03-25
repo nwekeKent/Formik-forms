@@ -53,12 +53,20 @@ const Section = styled.section`
 
 const App = () => {
       return (
-      <Wrapper>
-          <Section>
-              <SignUp />
-              <div></div>
-          </Section>
-      </Wrapper>
+
+        <Router>
+        <Wrapper>
+            <Section>
+            <Switch>
+            <Route exact path='/' component={Home} />
+            <Route  path='/signup' component={SignUp} />
+            <Route  path='/signin' component={SignIn} />
+            </Switch>
+                <div></div>
+            </Section>
+        </Wrapper>
+        </Router>
+    
       )
  
 }
